@@ -1,4 +1,4 @@
-﻿class AssociateLine < ActiveRecord::Base
+class AssociateLine < ActiveRecord::Base
   belongs_to :associate
   belongs_to :sell
   belongs_to :number

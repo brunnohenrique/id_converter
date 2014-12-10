@@ -1,4 +1,4 @@
-﻿class LineBill < ActiveRecord::Base
+class LineBill < ActiveRecord::Base
   belongs_to :bill_period
   belongs_to :associate_bill
   belongs_to :associate_line
