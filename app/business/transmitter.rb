@@ -107,6 +107,8 @@ class Transmitter
         raise "#{model} - #{relation.class} - #{key} - #{value} (old_id) not found" unless record
 
         attributes[key] = record.new_id
+      elsif model == AssociateUser && key == 'login'
+        attributes[key] = value + '_cdl' if model.using(:destiny).find_by(login: value)
       end
     end
 
