@@ -1,0 +1,28 @@
+octopus:		
+  environments:		
+    - development		
+  development:		
+    default:		
+      adapter: postgresql		
+      encoding: unicode		
+      pool: 5		
+      username: postgres		
+      password: 123456		
+      verify_connection: true		
+      database: id_converter		
+    source:		
+      adapter: postgresql		
+      encoding: unicode		
+      pool: 5		
+      username: postgres		
+      password: 123456		
+      verify_connection: true		
+      database: old_database		
+    destiny:		
+      adapter: postgresql		
+      encoding: unicode		
+      pool: 5		
+      username: postgres		
+      password: 123456		
+      verify_connection: true		
+      database: new_database
