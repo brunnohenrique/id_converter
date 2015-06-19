@@ -1,4 +1,4 @@
 class DistributorLineReportStorage < ActiveRecord::Base
   belongs_to :distributor
-  belongs_to :bill_period
+  belongs_to :export_bill
 end

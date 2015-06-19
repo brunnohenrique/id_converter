@@ -1,4 +1,4 @@
 class OperationControl < ActiveRecord::Base
-  belongs_to :source, polymorphic: true
+  belongs_to :user
   belongs_to :creator, polymorphic: true
 end

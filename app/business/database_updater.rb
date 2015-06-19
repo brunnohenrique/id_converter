@@ -67,17 +67,17 @@ class DatabaseUpdater
   end
 
   # DatabaseUpdater.copy_n_to_n
-  def self.copy_n_to_n(*attr)
-    new(*attr).copy_n_to_n
-  end
+  # def self.copy_n_to_n(*attr)
+  #   new(*attr).copy_n_to_n
+  # end
 
-  def copy_n_to_n
-    models = [DistributorStockOperation, ProductModelColor]
+  # def copy_n_to_n
+  #   models = [DistributorStockOperation, ProductModelColor]
 
-    models.each do |model|
-      Transmitter.n_to_n(model)
-    end
-  end
+  #   models.each do |model|
+  #     Transmitter.n_to_n(model)
+  #   end
+  # end
 
   # DatabaseUpdater.models_group
   def self.models_group(*attr)
@@ -86,14 +86,17 @@ class DatabaseUpdater
 
   def models_group
     {
-      one_time: [
-        Country, State, City, Manager, Operator, ProductFabricator,
-        Tariff, StockOperation, RequestType, Color, ProductLevel,
+      one_time: [],
+
+      checking: [
+        Brand, Partner, Group, User, Address, OperatorAccount, ProductModel, TicketContactType, TicketType,
+        TicketSubType, ProductFabricator, Tariff, Country, State, City, Manager, Operator,
+        StockOperation, RequestType, Color, ProductLevel,
         ProcessType, ProcessStep, ProcessStepResponsible,
         BillAdditionType, BillDiscountType, AssociateCancel, AssociateUserLine, Block,
         ChipMaintenanceType, ChipMaintenance, DistributorTarget, LineCancellation,
         LineCancellationItem, NegotiationInternet, NegotiationProduct, NegotiationService,
-        NumberShift, OperationControl, OperationControlService, PackagePrice,
+        NumberShift, OperationControl, PackagePrice,
         PlanShift, ProcessStepAction, ProductMatrix, RemoteRequest, Role, SellInternetItem,
         SellPlanItem, SellPlanItemService, ServiceOperation, ServiceOperationItem,
         ServiceTariff, Sms, StockAdjust, StockAdjustEntry, StockAdjustOutput,
@@ -103,13 +106,8 @@ class DatabaseUpdater
         ProcessManager, Archive, ProcessFlow, StockProductChosen, StockProductChosenItem, ImportCall
       ],
 
-      checking: [
-        Partner, Group, User, Address, OperatorAccount, ProductModel, TicketContactType, TicketType, 
-        TicketSubType
-      ],
-
       force_copy: [
-        Brand, Distributor, Domain, MasterOperatorContract, MasterManagerContract,
+        Distributor, Domain, MasterOperatorContract, MasterManagerContract,
         MasterDistributorContract, CommercialTable, Plan, PlanTariff,
         FacilityPackage, Number, Request, RequestItem, Service, ExportBill,
         InternetPlan, Invoice, InvoiceItem, StockProduct, BillPeriod, Associate,
@@ -129,17 +127,17 @@ class DatabaseUpdater
     [
       Country, State, City, Brand, Distributor, Partner, Manager, Domain, Group,
       User, Operator, Associate, ProductFabricator, ProductModel, Tariff,
-      CommercialTable, OperatorAccount, Number, MasterOperatorContract,
+      CommercialTable, OperatorAccount, Number, MasterOperatorContract, MasterConfiguration,
       MasterManagerContract, MasterDistributorContract, RequestType, StockOperation,
       Request, Plan, Service, FacilityPackage, Color, ProductLevel, LineGroup, InternetPlan,
       Negotiation, Sell, AssociateLine, StockProduct, ComodatoMovement, Comodato, AssociateLinePlan,
       AssociateLineService, ProcessType, ProcessStep, ProcessStepResponsible, ExportBill, BillPeriod,
-      GroupAssociateBill, AssociateBill, LineBill, AssociateUser, FranchiseMovement, 
-      DistributorConfiguration, TicketContactType, BillAdditionType, BillDiscountType, Bill, 
+      GroupAssociateBill, AssociateBill, LineBill, AssociateUser, FranchiseMovement, OperatorBill,
+      DistributorConfiguration, TicketContactType, BillAdditionType, BillDiscountType, Bill,
       BillAddition, BillAdditionItem, BillDiscount, BillDiscountItem, ServiceBill, AssociateCancel,
-      AssociateUserLine, Block, ChipMaintenanceType, ChipMaintenance, Contact, DistributorTarget,
+      AssociateUserLine, Block, BlockAssociateLine, ChipMaintenanceType, ChipMaintenance, Contact, DistributorTarget,
       Invoice, InvoiceItem, LineCancellation, LineCancellationItem, NegotiationInternet,
-      NegotiationProduct, NegotiationService, NumberShift, OperationControl, OperationControlService,
+      NegotiationProduct, NegotiationService, NumberShift, OperationControl, OperationControlItem,
       PackagePrice, PlanShift, PlanShiftItem, PlanTariff, ProcessStepAction,
       ProductMatrix, RemoteRequest, Repayment, RequestItem, Role, SellInternetItem,
       SellPlanItem, SellPlanItemService, ServiceOperation, ServiceOperationItem,
@@ -149,7 +147,7 @@ class DatabaseUpdater
       TicketSubType, Ticket, Tour, TourAssociate, TourStep, TransferTitle,
       TransferTitleItem, Address, ProcessManager, Archive, ProcessFlow,
       StockProductChosen, StockProductChosenItem, TicketFlow, Comment,
-      LineConsumption, ImportCall #, Call
+      LineConsumption, ImportCall, Call
     ]
   end
 
